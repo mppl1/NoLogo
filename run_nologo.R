@@ -48,6 +48,15 @@ fss<-read_spacerparams('spacer_length35.txt');
 fspa<-read_params('spacer_model35.txt');
 fhyd<-read_params('hydrophobic_model35.txt');
 
+mlreadFASTA(file="scNEStest.fasta")->sequencedf
+sequencelist<-setNames(split(sequencedf$V4, seq(nrow(sequencedf))), (sequencedf$V1))
+
+for (n in 1:length(sequencelist))
+{gsub("[*]", "", sequencelist[[n]])-> sequencelist[[n]] 
+  unlist(strsplit(sequencelist[[n]], "")[[1]])->sequencelist[[n]]
+  
+}
+
 
 cutoff<-0;
 
